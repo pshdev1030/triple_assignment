@@ -26,7 +26,7 @@ TRIPLE의 과제전형으로 트리플의 홈페이지의 한 섹션을 구현�
 
 ## 배포 주소
 
-https://triple-assignment-pshdev1030.vercel.app/
+https://triple-assignment-parksunghyeon.vercel.app/
 
 ## 실행방법
 
