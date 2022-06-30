@@ -1,0 +1,1 @@
+{ "extends": ["@titicaca/eslint-config-triple/stylelint"] }

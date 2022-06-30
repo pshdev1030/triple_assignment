@@ -1,0 +1,18 @@
+html,
+body,
+#root {
+  font-family: 'Open Sans', sans-serif;
+  min-width: 1200px;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+}
+
+[class] {
+  margin: 0;
+  padding: 0;
+}
