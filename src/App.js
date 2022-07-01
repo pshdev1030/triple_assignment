@@ -1,12 +1,17 @@
 import styled from '@emotion/styled'
 
-import appleImage from './assets/images/badge-apple4x.png'
-import googleImage from './assets/images/play-store2x.png'
-import trippleLogoImage from './assets/images/triple2x.png'
+import applePng from './assets/images/badge-apple4x.png'
+import googlePng from './assets/images/play-store2x.png'
+import trippleLogoPng from './assets/images/triple2x.png'
+import appleWebp from './assets/images/badge-apple4x.webp'
+import googleWebp from './assets/images/play-store2x.webp'
+import trippleLogoWebp from './assets/images/triple2x.webp'
 import { FadeIn } from './components/FadeIn'
 import { IntroduceItem } from './components/IntroduceItem'
 import { AwardItem } from './components/AwardItem'
 import { ContentLogo } from './components/ContentLogo'
+import { useEffect, useState } from 'react'
+import { detectWebpSupport } from './utils/detectWebpSupport'
 const FADEIN_ANIMATION_DURATION = 700
 const TRIPPLE_ICON_FADEIN_DELAY = 100
 const TRIPPLE_INFO_FADEIN_DELAY = 200
@@ -17,6 +22,12 @@ const TRIPPLE_NUM_OF_REVIEWS = 100
 const TRIPPLE_NUM_OF_PLANS = 470
 
 function App() {
+  const [supportWebp, setSupportWebp] = useState(false)
+
+  useEffect(() => {
+    detectWebpSupport(setSupportWebp(true), setSupportWebp(false))
+  }, [])
+
   return (
     <SectionWrapper>
       <ContentWrapper>
@@ -24,7 +35,7 @@ function App() {
           duration={FADEIN_ANIMATION_DURATION}
           delay={TRIPPLE_ICON_FADEIN_DELAY}
         >
-          <ContentLogo logoSrc={trippleLogoImage}>
+          <ContentLogo logoSrc={supportWebp ? trippleLogoWebp : trippleLogoPng}>
             <div>2019년 2월 기준</div>
           </ContentLogo>
         </FadeIn>
@@ -56,12 +67,12 @@ function App() {
         >
           <AwardsWrapper>
             <AwardItem
-              imageSrc={googleImage}
+              imageSrc={supportWebp ? googleWebp : googlePng}
               title="2018 구글 플레이스토어"
               description="올해의 앱 최우수상 수상"
             />
             <AwardItem
-              imageSrc={appleImage}
+              imageSrc={supportWebp ? appleWebp : applePng}
               title="2018 애플 앱스토어"
               description="오늘의 여행앱 선정"
             />
