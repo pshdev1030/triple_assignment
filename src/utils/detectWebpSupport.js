@@ -1,4 +1,4 @@
-export function detectWebpSupport(successCallback, failCallback) {
+export function detectWebpSupport(callBackFn) {
   const image = new Image()
   // 1px x 1px WebP 이미지
   const webpdata =
@@ -8,10 +8,10 @@ export function detectWebpSupport(successCallback, failCallback) {
     const result = event?.type === 'load' && image.width === 1
     if (result) {
       document.body.classList.add('webp')
-      successCallback && successCallback()
+      callBackFn && callBackFn(true)
     } else {
       document.body.classList.add('no-webp')
-      failCallback && failCallback()
+      callBackFn && callBackFn(false)
     }
   }
   image.onerror = callback

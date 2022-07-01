@@ -22,10 +22,10 @@ const TRIPPLE_NUM_OF_REVIEWS = 100
 const TRIPPLE_NUM_OF_PLANS = 470
 
 function App() {
-  const [supportWebp, setSupportWebp] = useState(false)
+  const [supportWebp, setSupportWebp] = useState(true)
 
   useEffect(() => {
-    detectWebpSupport(setSupportWebp(true), setSupportWebp(false))
+    detectWebpSupport(setSupportWebp)
   }, [])
 
   return (
