@@ -180,6 +180,10 @@ curNum = maxNum * easeOutExpo(현재시간 / 애니메이션 총 실행시간)
 
 이미지와 같은 정적파일이나 상수값들은 App.js의 최상위에 정의하고 컴포넌트의 props로 내려주어 쉽게 관리할 수 있도록 하였습니다.
 
+4. 이미지 최적화
+
+webp 지원여부에 따라 png 대신 webp를 로드하여 크롬 개발자도구 느린 3g기준 이미지가 약 19% 빠르게 로드될 수 있도록 하였습니다.
+
 ## 아쉬운 점
 
 `@emotion/react`는 HTML 요소에 css라는 property를 제공해서 style을 관리합니다. 이는 HTML 표준에 존재하지 않는 속성이기 때문에 바벨에 JSX pragma를 제공해주어야 하는데, 이것이 린팅과 포매팅을 셋업하며 [titicacadev/eslint-config-triple](https://github.com/titicacadev/eslint-config-triple)과 충돌하는 문제가 있어, eslint 셋업을 하지 못하였습니다.
