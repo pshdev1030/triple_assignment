@@ -1,16 +1,20 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 
+const INITIAL_DELAY = 2000
+const INITIAL_NUMBER = 0
+
 function easeOutExpo(t) {
-  return t === 1 ? 1 : -Math.pow(2, -10 * t) + 1
+  return t > 1 ? 1 : 1 - Math.pow(2, -5 * t)
 }
 
 export const useIncreaseNumber = (
   maxNumber,
-  initialNumber = 0,
-  duration = 2000,
+  initialNumber = INITIAL_NUMBER,
+  duration = INITIAL_DELAY,
 ) => {
   const [curCount, setcurCount] = useState(initialNumber)
   const curTime = useRef(null)
+  const count = useRef(0)
 
   const step = useCallback((timeStamp) => {
     if (curTime.current === null) {
@@ -19,13 +23,19 @@ export const useIncreaseNumber = (
 
     const progress = timeStamp - curTime.current
 
-    const nextCount = Math.ceil(
+    const nextCount = parseInt(
       (maxNumber - initialNumber) * easeOutExpo(progress / duration),
     )
 
-    const nextCurCount = nextCount > maxNumber ? maxNumber : nextCount
+    console.log(
+      count.current++,
+      nextCount,
+      progress,
+      duration,
+      progress / duration,
+    )
 
-    setcurCount(nextCurCount)
+    setcurCount(nextCount)
 
     if (progress < duration) {
       window.requestAnimationFrame(step)
