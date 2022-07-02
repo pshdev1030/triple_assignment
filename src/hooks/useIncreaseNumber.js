@@ -14,7 +14,6 @@ export const useIncreaseNumber = (
 ) => {
   const [curCount, setcurCount] = useState(initialNumber)
   const curTime = useRef(null)
-  const count = useRef(0)
 
   const step = useCallback((timeStamp) => {
     if (curTime.current === null) {
@@ -25,14 +24,6 @@ export const useIncreaseNumber = (
 
     const nextCount = parseInt(
       (maxNumber - initialNumber) * easeOutExpo(progress / duration),
-    )
-
-    console.log(
-      count.current++,
-      nextCount,
-      progress,
-      duration,
-      progress / duration,
     )
 
     setcurCount(nextCount)
